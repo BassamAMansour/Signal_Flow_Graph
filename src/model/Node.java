@@ -1,66 +1,47 @@
 package model;
 
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Node {
+/**
+ * @author HANAN SAMIR
+ *
+ */
+public class Node implements INode {
+	private String nodeName;
+	private List<IDirectedEdge> edges;
 
-    private HashSet<DirectedEdge> outwardEdges;
-    private HashSet<DirectedEdge> inwardEdges;
-    private String nodeName;
+	public Node(String nodeName) {
+		this.nodeName = nodeName;
+		this.edges = new ArrayList<IDirectedEdge>();
+	}
 
-    public Node(HashSet<DirectedEdge> outwardEdges, HashSet<DirectedEdge> inwardEdges, String nodeName) {
-        this.outwardEdges = outwardEdges;
-        this.inwardEdges = inwardEdges;
-        this.nodeName = nodeName;
-    }
+	@Override
+	public String getNodeName() {
+		return this.nodeName;
+	}
 
-    public Node(String nodeName) {
-        this.nodeName = nodeName;
-    }
+	@Override
+	public void setNodeName(String nodeName) {
+		this.nodeName = nodeName;
 
-    public void addInwardEdge(DirectedEdge inwardEdge) {
-        inwardEdge.setDestinationNode(this);
-        inwardEdges.add(inwardEdge);
-    }
-    public boolean removeInwardEdge(DirectedEdge inwardEdge){
-        inwardEdge.setDestinationNode(null);
-        return inwardEdges.remove(inwardEdge);
-    }
+	}
 
-    public void addOutwardEdge(DirectedEdge outwardEdge) {
-        outwardEdge.setOriginNode(this);
-        outwardEdges.add(outwardEdge);
-    }
-    public boolean removeOutwardEdge(DirectedEdge outwardEdge){
-        outwardEdge.setOriginNode(null);
-        return outwardEdges.remove(outwardEdge);
-    }
+	@Override
+	public List<IDirectedEdge> getOutwardEdges() {
+		return this.edges;
+	}
 
-    public HashSet<DirectedEdge> getOutwardEdges() {
-        return outwardEdges;
-    }
+	@Override
+	public void addEdge(IDirectedEdge edge) {
+		edges.add(edge);
 
-    public void setOutwardEdges(HashSet<DirectedEdge> outwardEdges) {
-        this.outwardEdges = outwardEdges;
-    }
+	}
 
-    public HashSet<DirectedEdge> getInwardEdges() {
-        return inwardEdges;
-    }
+	@Override
+	public void removeEdges() {
+		this.edges.clear();
 
-    public void setInwardEdges(HashSet<DirectedEdge> inwardEdges) {
-        this.inwardEdges = inwardEdges;
-    }
+	}
 
-    public String getNodeName() {
-        return nodeName;
-    }
-
-    public void setNodeName(String nodeName) {
-        this.nodeName = nodeName;
-    }
-
-    public boolean equals(Node node) {
-        return node.getNodeName().equals(getNodeName());
-    }
 }
