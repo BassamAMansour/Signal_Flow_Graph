@@ -2,31 +2,31 @@ package model;
 
 public interface IPath {
 	/**
-	 * set the content of a path.
-	 * 
-	 * @param pathContent.
-	 */
-	public void setPathContent(String pathContent);
-
-	/**
 	 * get the content of a path.
-	 * 
+	 *
 	 * @return pathContent.
 	 */
-	public String getPathContent();
+	String getPathContent();
 
 	/**
-	 * set the gain of a path.
-	 * 
-	 * @param pathGain.
+	 * set the content of a path.
+	 *
+	 * @param pathContent
 	 */
-	public void setPathGain(float pathGain);
+	void setPathContent(String pathContent);
 
 	/**
 	 * get the gain of a path.
-	 * 
+	 *
 	 * @return pathGain.
 	 */
-	public float getPathGain();
+	float getPathGain();
+
+	/**
+	 * set the gain of a path.
+	 *
+	 * @param pathGain
+	 */
+	void setPathGain(float pathGain);
 
 }

@@ -7,25 +7,25 @@ public interface INode {
 	 * get node name.
 	 * @return nodeName.
 	 */
-	public String getNodeName();
+	String getNodeName();
 	/**
 	 * set the node name.
-	 * @param nodeName.
+	 * @param nodeName
 	 */
-	public void setNodeName(String nodeName);
+	void setNodeName(String nodeName);
 	/**
 	 * get all outward edges connected to node.
 	 * @return edges.
 	 */
-	public List<IDirectedEdge> getOutwardEdges();
+	List<IDirectedEdge> getOutwardEdges();
 	/**
 	 * add edge to node.
-	 * @param edge.
+	 * @param edge
 	 */
-	public void addEdge(IDirectedEdge edge);
+	void addEdge(IDirectedEdge edge);
 	/**
 	 * remove all outward edges connected to a node.
 	 */
-	public void removeEdges();
+	void removeEdges();
 
 }

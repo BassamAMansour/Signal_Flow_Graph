@@ -1,20 +1,13 @@
 package test;
 
-import java.util.ArrayList;
-import java.util.List;
+import view.GraphPlotting;
 
-import model.DirectedEdge;
-import model.INode;
-import model.ISignalFlowGraph;
-import model.Node;
-import model.SignalFlowGraph;
-import model.IPath;
-
+import javax.swing.*;
 
 public class Main {
 
 	public static void main(String[] args) {
-		List<INode> graph= new ArrayList<INode>();
+		/*List<INode> graph= new ArrayList<INode>();
 		INode node1 = new Node("y1");
 		INode node2 = new Node("y2");
 		INode node3 = new Node("y3");
@@ -43,7 +36,14 @@ public class Main {
 		System.out.println("Forward Paths :");
 		for (IPath path : paths) {
 			System.out.println("Path: "+" "+path.getPathContent() + "  " +"Gain: "+" "+ path.getPathGain());
-		}
+		}*/
+
+
+        GraphPlotting graphPlotter = new GraphPlotting("");
+
+        graphPlotter.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        graphPlotter.setVisible(true);
+
 
 	}
 
