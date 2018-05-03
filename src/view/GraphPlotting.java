@@ -44,9 +44,7 @@ public class GraphPlotting extends JFrame {
         addEdgesStyle();
         addGraphComponents();
         setPlotProperties();
-
         setCircleLayout();
-
         new mxParallelEdgeLayout(graph).execute(parent);
 
         mxGraphComponent graphComponent = new mxGraphComponent(graph);
@@ -69,8 +67,8 @@ public class GraphPlotting extends JFrame {
         Hashtable<String, Object> style = new Hashtable<>();
         style.put(mxConstants.STYLE_SHAPE, mxConstants.SHAPE_ELLIPSE);
         style.put(mxConstants.STYLE_FONTSIZE, 20);
-        style.put(mxConstants.STYLE_FILLCOLOR, "#ECFF36");
-        style.put(mxConstants.STYLE_FONTCOLOR, "#000000");
+        style.put(mxConstants.STYLE_FILLCOLOR, "#ce81ab");
+        style.put(mxConstants.STYLE_FONTCOLOR, graph.getStylesheet().getDefaultEdgeStyle().get(mxConstants.STYLE_FONTCOLOR));
         stylesheet.putCellStyle(KEY_VERTEX_STYLE, style);
     }
 
