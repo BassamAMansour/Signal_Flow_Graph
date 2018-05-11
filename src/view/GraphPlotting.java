@@ -6,10 +6,7 @@ import com.mxgraph.swing.mxGraphComponent;
 import com.mxgraph.util.mxConstants;
 import com.mxgraph.view.mxGraph;
 import com.mxgraph.view.mxStylesheet;
-import model.IDirectedEdge;
-import model.INode;
-import model.ISignalFlowGraph;
-import model.SignalFlowGraph;
+import model.*;
 import utils.GraphFileReader;
 
 import javax.swing.*;
@@ -146,5 +143,58 @@ public class GraphPlotting extends JFrame {
 
     public void setHeight(double height) {
         setSize(new Dimension(getWidth(), (int) height));
+    }
+
+    public void showGraphInfo() {
+        JFrame graphInfoFrame = new JFrame();
+        graphInfoFrame.setSize(400, 300);
+        graphInfoFrame.setTitle("Signal Flow Graph info");
+        JTextArea label = new JTextArea(getGraphInfo());
+        graphInfoFrame.add(label);
+        graphInfoFrame.pack();
+        graphInfoFrame.setVisible(true);
+
+    }
+
+    private String getGraphInfo() {
+        StringBuilder info = new StringBuilder();
+        List<IPath> paths = signalFlowGraph.getForwardPaths(nodes.get(0), nodes.get(nodes.size() - 1));
+        info.append("Number of Forward Paths = ").append(paths.size());
+        info.append("\nForward Paths :");
+        for (IPath path : paths) {
+            info.append("\nPath: " + " ").append(path.getPathContent()).append("  ").append("Gain: ").append(" ").append(path.getPathGain());
+        }
+        System.out.println("\n--------------------------------------------");
+        List<IPath> loops = signalFlowGraph.getIndividualLoops();
+        info.append("\nNumber of Individual loops = ").append(loops.size());
+        info.append("\nIndividual loops :");
+        for (IPath path : loops) {
+            info.append("\nLoop: " + " ").append(path.getPathContent()).append("  ").append("Gain: ").append(" ").append(path.getPathGain());
+        }
+        info.append("\n--------------------------------------------");
+        info.append("\nAll Non-Touching loops : ");
+        List<List<List<IPath>>> lists = signalFlowGraph.getNonTouchingLoops();
+        int ind = 1;
+        for (List<List<IPath>> list1 : lists) {
+            info.append("\n-----------------------");
+            info.append("\nsize = ").append(ind);
+            ind++;
+            for (List<IPath> list2 : list1) {
+                for (IPath path : list2) {
+                    info.append(path.getPathContent()).append(" | ");
+                }
+                info.append("\n");
+            }
+        }
+        info.append("\n-------------------------------------------");
+        info.append("\nAll Deltas : ");
+        List<Float> delta = signalFlowGraph.getDeltas();
+        for (Float del : delta) {
+            info.append("\n").append(del);
+        }
+        info.append("\n-------------------------------------------");
+        info.append("\nOverAll Transfer Function = ");
+        info.append("\n").append(signalFlowGraph.getOverAllTransferFunction(nodes.get(0), nodes.get(nodes.size() - 1)));
+        return info.toString();
     }
 }

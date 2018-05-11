@@ -6,27 +6,27 @@ public interface IPath {
 	 *
 	 * @return pathContent.
 	 */
-	String getPathContent();
+    String getPathContent();
 
 	/**
 	 * set the content of a path.
 	 *
-	 * @param pathContent
+     * @param pathContent.
 	 */
-	void setPathContent(String pathContent);
+    void setPathContent(String pathContent);
 
 	/**
 	 * get the gain of a path.
 	 *
 	 * @return pathGain.
 	 */
-	float getPathGain();
+    float getPathGain();
 
 	/**
 	 * set the gain of a path.
 	 *
-	 * @param pathGain
+     * @param pathGain.
 	 */
-	void setPathGain(float pathGain);
+    void setPathGain(float pathGain);
 
 }
