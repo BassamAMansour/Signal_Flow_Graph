@@ -1,58 +1,51 @@
 package test;
 
-import model.*;
-import view.GraphPlotting;
-
-import javax.swing.*;
-import java.util.ArrayList;
-import java.util.List;
-
-
 public class Main {
 
     public static void main(String[] args) {
-        List<INode> graph = new ArrayList<INode>();
-//		INode node1 = new Node("y1");
-//		INode node2 = new Node("y2");
-//		INode node3 = new Node("y3");
-//		INode node4 = new Node("y4");
-//		INode node5 = new Node("y5");
-//		INode node6 = new Node("y6");
-//		node1.addEdge(new DirectedEdge(node2, 1));
-//		node2.addEdge(new DirectedEdge(node3, 5));
-//		node2.addEdge(new DirectedEdge(node6, 10));
-//		node3.addEdge(new DirectedEdge(node4, 10));
-//		node4.addEdge(new DirectedEdge(node3, -1));
-//		node4.addEdge(new DirectedEdge(node5, 2));
-//		node5.addEdge(new DirectedEdge(node4, -2));
-//		node5.addEdge(new DirectedEdge(node2, -1));
-//		node6.addEdge(new DirectedEdge(node5, 2));
-//		node6.addEdge(new DirectedEdge(node6, -1));
-//		graph.add(node1);
-//		graph.add(node2);
-//		graph.add(node3);
-//		graph.add(node4);
-//		graph.add(node5);
-//		graph.add(node6);
 
-//		INode node1 = new Node("y1");
-//		INode node2 = new Node("y2");
-//		INode node3 = new Node("y3");
-//		node1.addEdge(new DirectedEdge(node2, 1));
-//		node1.addEdge(new DirectedEdge(node3, 2));
-//		node2.addEdge(new DirectedEdge(node3, 5));
-//		node2.addEdge(new DirectedEdge(node1, 10));
-//		node3.addEdge(new DirectedEdge(node2, 10));
-//		node3.addEdge(new DirectedEdge(node1, -1));
-//		graph.add(node1);
-//		graph.add(node2);
-//		graph.add(node3);
 
-        GraphPlotting graphPlotting = new GraphPlotting("");
-        graphPlotting.showGraphInfo();
-        graphPlotting.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        graphPlotting.setVisible(true);
 
+
+
+
+
+ /*     List<INode> graph = new ArrayList<INode>();
+		INode node1 = new Node("y1");
+		INode node2 = new Node("y2");
+		INode node3 = new Node("y3");
+		INode node4 = new Node("y4");
+		INode node5 = new Node("y5");
+		INode node6 = new Node("y6");
+		node1.addEdge(new DirectedEdge(node2, 1));
+		node2.addEdge(new DirectedEdge(node3, 5));
+		node2.addEdge(new DirectedEdge(node6, 10));
+		node3.addEdge(new DirectedEdge(node4, 10));
+		node4.addEdge(new DirectedEdge(node3, -1));
+		node4.addEdge(new DirectedEdge(node5, 2));
+		node5.addEdge(new DirectedEdge(node4, -2));
+		node5.addEdge(new DirectedEdge(node2, -1));
+		node6.addEdge(new DirectedEdge(node5, 2));
+		node6.addEdge(new DirectedEdge(node6, -1));
+		graph.add(node1);
+		graph.add(node2);
+		graph.add(node3);
+		graph.add(node4);
+		graph.add(node5);
+		graph.add(node6);
+
+		INode node1 = new Node("y1");
+		INode node2 = new Node("y2");
+		INode node3 = new Node("y3");
+		node1.addEdge(new DirectedEdge(node2, 1));
+		node1.addEdge(new DirectedEdge(node3, 2));
+		node2.addEdge(new DirectedEdge(node3, 5));
+		node2.addEdge(new DirectedEdge(node1, 10));
+		node3.addEdge(new DirectedEdge(node2, 10));
+		node3.addEdge(new DirectedEdge(node1, -1));
+		graph.add(node1);
+		graph.add(node2);
+		graph.add(node3);
         INode node1 = new Node("y1");
         INode node2 = new Node("y2");
         INode node3 = new Node("y3");
@@ -68,8 +61,6 @@ public class Main {
         graph.add(node3);
         graph.add(node4);
         graph.add(node5);
-
-
         ISignalFlowGraph signalFlowGraph = new SignalFlowGraph(graph);
         List<IPath> paths = signalFlowGraph.getForwardPaths(node1, node5);
         System.out.println("Number of Forward Paths = " + paths.size());
@@ -107,7 +98,7 @@ public class Main {
         }
         System.out.println("-------------------------------------------");
         System.out.print("OverAll Transfer Function = ");
-        System.out.println(signalFlowGraph.getOverAllTransferFunction(node1, node5));
+        System.out.println(signalFlowGraph.getOverAllTransferFunction(node1, node5));*/
     }
 
 }
