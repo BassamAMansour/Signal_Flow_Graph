@@ -40,7 +40,9 @@ public class GraphInput {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String nodeName = tfVertexName.getText();
-                nodesMap.put(nodeName, new Node(nodeName));
+                if (nodeName.isEmpty()) {
+                    nodesMap.put(nodeName, new Node(nodeName));
+                }
                 tfVertexName.setText("");
             }
         });
@@ -52,7 +54,8 @@ public class GraphInput {
                 String destinationNodeName = tfEdgeDestination.getText();
                 String gain = tfEdgeGain.getText();
 
-                if (sourceNodeName.isEmpty() ||
+                if (nodesMap.size() < 2 ||
+                        sourceNodeName.isEmpty() ||
                         destinationNodeName.isEmpty() ||
                         !nodesMap.containsKey(sourceNodeName) ||
                         !nodesMap.containsKey(destinationNodeName) ||
