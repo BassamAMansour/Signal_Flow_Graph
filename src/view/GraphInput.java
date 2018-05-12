@@ -40,7 +40,7 @@ public class GraphInput {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String nodeName = tfVertexName.getText();
-                if (nodeName.isEmpty()) {
+                if (!nodeName.isEmpty()) {
                     nodesMap.put(nodeName, new Node(nodeName));
                 }
                 tfVertexName.setText("");
