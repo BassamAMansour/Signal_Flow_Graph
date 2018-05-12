@@ -20,6 +20,12 @@ public class GraphInput {
     private JFormattedTextField tfEdgeGain;
     private JButton btnStartPlottingButton;
     private JPanel mainPanel;
+    private JFormattedTextField tfSourceNode;
+    private JFormattedTextField tfSinkNode;
+    private JButton btnSetSourceNode;
+    private JButton btnSetSink;
+    private INode sinkNode;
+    private INode sourceNode;
 
     public GraphInput() {
         this.nodesMap = new HashMap<>();
@@ -70,11 +76,34 @@ public class GraphInput {
             }
         });
 
+        btnSetSink.addActionListener(new ActionListener() {
+            String sinkNodeName = tfSinkNode.getText();
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (!nodesMap.isEmpty() && nodesMap.containsKey(sinkNodeName)) {
+                    sinkNode = nodesMap.get(sinkNodeName);
+                }
+            }
+        });
+
+        btnSetSourceNode.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String sourceNodeName = tfSourceNode.getText();
+
+                if (!nodesMap.isEmpty() && nodesMap.containsKey(sourceNodeName)) {
+                    sourceNode = nodesMap.get(sourceNodeName);
+                }
+
+            }
+        });
+
         btnStartPlottingButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (!nodesMap.isEmpty()) {
-                    GraphPlotting graphPlotting = new GraphPlotting(new ArrayList<>(nodesMap.values()));
+                    GraphPlotting graphPlotting = new GraphPlotting(new ArrayList<>(nodesMap.values()), sourceNode, sinkNode);
                     graphPlotting.showGraphInfo();
                     graphPlotting.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
                     graphPlotting.setVisible(true);

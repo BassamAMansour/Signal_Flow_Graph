@@ -22,14 +22,18 @@ public class GraphPlotting extends JFrame {
     private static final String KEY_VERTEX_STYLE = "vertex_style";
     private static final String KEY_EDGE_STYLE = "edge_style";
     private static final String PANEL_TITLE = "Signal Flow Diagram Plotter";
+    private final INode sourceNode;
+    private final INode sinkNode;
     ISignalFlowGraph signalFlowGraph;
     mxGraph graph;
     Object parent;
     private List<INode> nodes;
     private Map<String, Object> graphVerticesMap;
 
-    public GraphPlotting(List<INode> nodes) throws HeadlessException {
+    public GraphPlotting(List<INode> nodes, INode source, INode sink) throws HeadlessException {
         this.nodes = nodes;
+        this.sourceNode = source;
+        this.sinkNode = sink;
         this.graphVerticesMap = new HashMap<>(nodes.size());
         this.signalFlowGraph = new SignalFlowGraph(nodes);
         this.graph = new mxGraph();
@@ -146,11 +150,11 @@ public class GraphPlotting extends JFrame {
     }
 
     public void showGraphInfo() {
-        List<IPath> paths = signalFlowGraph.getForwardPaths(nodes.get(0), nodes.get(nodes.size() - 1));
+        List<IPath> paths = signalFlowGraph.getForwardPaths(sourceNode, sinkNode);
         List<IPath> loops = signalFlowGraph.getIndividualLoops();
         List<List<List<IPath>>> lists = signalFlowGraph.getNonTouchingLoops();
         List<Float> delta = signalFlowGraph.getDeltas();
-        float gain = signalFlowGraph.getOverAllTransferFunction(nodes.get(0), nodes.get(nodes.size() - 1));
+        float gain = signalFlowGraph.getOverAllTransferFunction(sourceNode, sinkNode);
         new Table(paths, loops, lists, delta, gain);
     }
 }
