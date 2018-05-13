@@ -77,16 +77,14 @@ public class GraphInput {
         });
 
         btnSetSink.addActionListener(new ActionListener() {
-            String sinkNodeName = tfSinkNode.getText();
-
             @Override
             public void actionPerformed(ActionEvent e) {
+                String sinkNodeName = tfSinkNode.getText();
                 if (!nodesMap.isEmpty() && nodesMap.containsKey(sinkNodeName)) {
-                    sinkNode = nodesMap.get(sinkNodeName);
+                    sourceNode = nodesMap.get(sinkNodeName);
                 }
             }
         });
-
         btnSetSourceNode.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
